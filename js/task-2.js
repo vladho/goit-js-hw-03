@@ -13,10 +13,10 @@
 
 // console.log(countProps({ mail: 'poly@mail.com', isOnline: true, score: 500 })); // 3
 
-const countProps = function(obj) {
-    Object.keys(obj)
-    console.log(obj)
-    console.log(obj.length)
+const countProps = function (obj) {
+
+return Object.values(obj).length
+
 };
 
-console.log(countProps({ name: 'Mango', age: 2 }))
+console.log(countProps({ mail: 'poly@mail.com', isOnline: true, score: 500 }))

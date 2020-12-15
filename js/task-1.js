@@ -22,4 +22,3 @@ const changeUser = function (user) {
 }
 
 console.table(changeUser(user));
-console.table(user);
