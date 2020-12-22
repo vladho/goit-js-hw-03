@@ -3,13 +3,16 @@ const Transaction = {
   WITHDRAW: 'withdraw',
 };
 
+let id = 0;
+
 const account = {
   balance: 0,
 
   transactions: [],
 
+  
   createTransaction(amount, type) {
-    const transactions = { id: this.transactions.length + 1, amount, type };
+    const transactions = { id: id += 1, amount, type };
     return transactions;
   },
 
@@ -19,13 +22,11 @@ const account = {
     this.balance += amount;
   },
   withdraw(amount) {
-    const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
-    this.transactions.push(transaction);
-    let balance = this.balance;
-    balance -= amount;
-    if (balance < 0) {
+    if (this.balance < 0) {
       alert('Недостаточно средств!');
     } else {
+      const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
+      this.transactions.push(transaction);
       this.balance -= amount;
     }
   },
@@ -71,4 +72,4 @@ console.log('Balance:', account.getBalance());
 console.log(account.getTransactionDetails(2));
 
 console.table(account.getTransactionTotal('deposit').allElement);
-console.log("Summ:", account.getTransactionTotal('deposit').summ);
+console.log('Summ:', account.getTransactionTotal('deposit').summ);
